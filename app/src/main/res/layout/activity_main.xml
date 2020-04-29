@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="92dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="AE CRM"
+        android:textColor="@color/colorSecondary"
+        android:textSize="25sp"
+        android:layout_marginTop="26dp"
+        />
+
+    <ImageView
+        android:layout_width="317dp"
+        android:layout_height="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/line"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/op"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        android:background="@drawable/button_bckg"
+
+        >
+
+
+
+    <LinearLayout
+        android:id="@+id/operation"
+        android:layout_width="317dp"
+        android:layout_height="47dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_bckg"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_bckg"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:text="OPERATIONS"
+            android:textSize="20sp"
+            android:textColor="@color/colorBackground"/>
+
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/arrow_down"
+            android:background="@drawable/button_bckg"
+            android:layout_marginLeft="90dp"
+            />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_operation"
+        android:layout_width="317dp"
+        android:layout_height="94dp"
+        android:background="@drawable/drop_down_bckg"
+        android:visibility="gone"
+        />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/rep"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/op"
+        android:background="@drawable/button_bckg"
+        >
+
+    <LinearLayout
+        android:id="@+id/report"
+        android:layout_width="317dp"
+        android:layout_height="47dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_bckg"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_bckg"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:text="REPORTS"
+            android:textSize="20sp"
+            android:textColor="@color/colorBackground"/>
+
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/arrow_down"
+            android:background="@drawable/button_bckg"
+            android:layout_marginLeft="125dp"/>
+
+     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_report"
+        android:layout_width="317dp"
+        android:layout_height="94dp"
+        android:background="@drawable/drop_down_bckg"
+        android:visibility="gone"
+        />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

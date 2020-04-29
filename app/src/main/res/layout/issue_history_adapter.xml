@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/myLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/reclycler_bckg"
+    android:layout_marginBottom="5dp"
+    >
+
+
+
+<!--            Date-->
+            <LinearLayout
+                android:id="@+id/date_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:"
+                        android:textSize="15dp"
+                        />
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="10-09-2019"
+                            android:textSize="16dp"
+                            />
+
+            </LinearLayout>
+
+            <!--            party name -->
+            <LinearLayout
+                android:id="@+id/party_name_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/date_layout"
+                android:layout_alignParentLeft="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Party Name:"
+                    android:textSize="15dp"
+                    />
+                <TextView
+                    android:id="@+id/party_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="XYZ"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+<!--            purpose of Visit-->
+
+
+
+            <LinearLayout
+                android:id="@+id/purposer_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/party_name_layout"
+                android:layout_alignParentLeft="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Purpose of Visit:"
+                    android:textSize="15dp"
+                    />
+                <TextView
+                    android:id="@+id/purpose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="ISSUE"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorSecondary"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/issue_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_dialog"
+                android:layout_below="@id/purposer_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:text="@string/issue_history_input"
+                />
+
+
+
+
+</RelativeLayout>

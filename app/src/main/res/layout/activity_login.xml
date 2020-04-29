@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".LoginActivity">
+
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="AE CRM"
+        android:textColor="@color/colorSecondary"
+        android:textSize="28sp"
+        android:layout_marginTop="219dp"
+    />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Let's get started"
+        android:textSize="14sp"
+        android:layout_marginTop="259dp"
+        />
+
+       <EditText
+           android:id="@+id/login"
+           android:layout_width="274dp"
+           android:layout_height="35dp"
+           android:hint="@string/hint_login"
+           android:layout_marginTop="331dp"
+           android:layout_centerHorizontal="true"
+           android:paddingLeft="15dp"
+           android:background="@drawable/input_login_bckg"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="274dp"
+        android:layout_height="35dp"
+        android:hint="@string/hint_password"
+        android:layout_marginTop="379dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="15dp"
+        android:background="@drawable/input_login_bckg"/>
+
+
+       <Button
+           android:id="@+id/signUp"
+           android:layout_width="274dp"
+           android:layout_height="37dp"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="466dp"
+           android:background="@drawable/button_bckg"
+           android:text="Sign Up"
+           android:textColor="@color/colorBackground"/>
+
+</RelativeLayout>

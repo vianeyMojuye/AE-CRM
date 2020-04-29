@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AE CRM</string>
+    <string name="hint_login">Login ID</string>
+    <string name="hint_password">Password</string>
+    <string name="login_id">login</string>
+    <string name="password_id">Password</string>
+    <string name="hint_search">Search Party Name</string>
+    <string name="hint_issue">Write in detail about the issue</string>
+    <string name="country_title">Country</string>
+    <string name="issue_history_input">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+    </string>
+
+</resources>

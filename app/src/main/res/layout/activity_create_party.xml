@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".CreatePartyActivity">
+
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="5dp"
+            android:layout_marginRight="80dp"
+            android:src="@drawable/arrow_left" />
+        <TextView
+            android:id="@+id/visit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Create "
+            android:textColor="@color/colorSecondary"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="92dp"
+            android:layout_height="30dp"
+            android:text="Party"
+            android:textColor="@color/colortitle"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/line"
+        />
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/party_name"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Party Name"
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/company_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:paddingLeft="10dp"
+            android:hint="XYZ Company"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/edit_create_bckg"/>
+<!--                Address 1-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/party_name"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address 1"
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="Qrst"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+<!--             Address 2-->
+               <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/party_name"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address 2"
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/address2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="Qrst"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+
+<!--            spinner country dropdown list-->
+            <LinearLayout
+                android:id="@+id/country"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/party_name"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="country"
+                    android:textColor="@color/colorBlack"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <!-- Spinner Element -->
+                    <Spinner
+                        android:id="@+id/spinner_country"
+                        android:layout_width="302dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/edit_create_bckg"
+                        android:prompt="@string/country_title"
+                        android:spinnerMode="dropdown"
+                        />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="260dp"
+                            android:src="@drawable/arrow_down_black"/>
+
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/add_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/button_add"
+                        android:background="@color/colorBackground"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+<!--               spinner state dropdown list-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="state"
+                    android:textColor="@color/colorBlack"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <!-- Spinner Element -->
+                    <Spinner
+                        android:id="@+id/spinner_state"
+                        android:layout_width="302dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/edit_create_bckg"
+                        android:prompt="@string/country_title"
+                        android:spinnerMode="dropdown"
+                        />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="260dp"
+                            android:src="@drawable/arrow_down_black"/>
+
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/add_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/button_add"
+                        android:background="@color/colorBackground"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+<!--               spinner city dropdown list-->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="city"
+                    android:textColor="@color/colorBlack"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <!-- Spinner Element -->
+                        <Spinner
+                            android:id="@+id/spinner_city"
+                            android:layout_width="302dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/edit_create_bckg"
+                            android:prompt="@string/country_title"
+                            android:spinnerMode="dropdown"
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="260dp"
+                            android:src="@drawable/arrow_down_black"/>
+
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/add_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/button_add"
+                        android:background="@color/colorBackground"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+<!--            Email     -->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="xyz@qrst"
+                    android:paddingLeft="10dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+            <!--             Owner Name 1-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/party_name"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Owner Name 1"
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/owner_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="Abc"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+            <!--             Owner Contact 1-->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Owner 1 Contact "
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/owner_contact1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="98765-43210"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+            <!--             Owner Name 2-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Owner Name 2"
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/owner_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="Def"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+            <!--             Owner Contact 2-->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Owner 2 Contact "
+                    android:textColor="@color/colorBlack"/>
+
+                <EditText
+                    android:id="@+id/owner_contact2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_create_bckg"
+                    android:hint="90123-45678"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack" />
+
+            </LinearLayout>
+
+
+<!--                 Submit-->
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="138dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_bckg"
+                android:text="Submit"
+                android:textColor="@color/colorBackground"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

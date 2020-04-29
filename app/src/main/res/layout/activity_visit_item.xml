@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".VisitPartyActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="5dp"
+            android:layout_marginRight="80dp"
+            android:src="@drawable/arrow_left" />
+        <TextView
+            android:id="@+id/visit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Visit "
+            android:textColor="@color/colorSecondary"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="92dp"
+            android:layout_height="30dp"
+            android:text="Party"
+            android:textColor="@color/colortitle"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="340dp"
+        android:layout_height="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/line"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/list_report"
+        android:layout_width="340dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/reclycler_bckg"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        >
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="18dp"
+            android:text="Party Name   : "/>
+        <TextView
+            android:id="@+id/party_name"
+            android:layout_width="161dp"
+            android:layout_height="18dp"
+            android:text="XYZ"
+            android:textStyle="bold"/>
+     </LinearLayout>
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="21dp"
+         android:layout_marginTop="20dp"
+         android:text="Purpose of Visit:"
+      />
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_marginTop="20dp">
+
+
+           <TextView
+               android:layout_width="90dp"
+               android:layout_height="match_parent"
+               android:textColor="@color/colorSecondary"
+               android:text="ORDER"
+               android:textSize="19dp"
+               android:textStyle="bold"
+               />
+
+
+           <Button
+               android:id="@+id/order_yes"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="70dp"
+               android:background="@drawable/button_green"
+               android:text="yes"
+               android:textColor="@color/colorGreen"
+
+               />
+
+           <Button
+               android:id="@+id/order_no"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="30dp"
+               android:background="@drawable/button_black"
+               android:text="NO"
+               android:textColor="@color/colorBlack"
+
+               />
+
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_marginTop="50dp">
+
+
+           <TextView
+               android:layout_width="90dp"
+               android:layout_height="match_parent"
+               android:textColor="@color/colorSecondary"
+               android:text="PAYMENT"
+               android:textSize="19dp"
+               android:textStyle="bold"
+               />
+
+
+           <Button
+               android:id="@+id/pay_yes"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="70dp"
+               android:background="@drawable/button_black"
+               android:text="Yes"
+               android:textColor="@color/colorBlack"
+
+               />
+
+           <Button
+               android:id="@+id/pay_no"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="30dp"
+               android:background="@drawable/button_black"
+               android:text="NO"
+               android:textColor="@color/colorBlack"
+
+               />
+
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_marginTop="50dp">
+
+
+           <TextView
+               android:layout_width="90dp"
+               android:layout_height="match_parent"
+               android:textColor="@color/colorSecondary"
+               android:text="ISSUE"
+               android:textSize="19dp"
+               android:textStyle="bold"
+
+               />
+
+
+           <Button
+               android:id="@+id/issue_yes"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="70dp"
+               android:background="@drawable/button_black"
+               android:text="YES"
+               android:textColor="@color/colorBlack"
+
+               />
+
+           <Button
+               android:id="@+id/issue_no"
+               android:layout_width="60dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="30dp"
+               android:background="@drawable/button_red"
+               android:text="NO"
+               android:textColor="@color/colorRed"
+
+               />
+
+
+       </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/edit_issue"
+            android:layout_width="match_parent"
+            android:layout_height="153dp"
+            android:background="@drawable/button_black"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:hint="@string/hint_issue"
+            android:visibility="gone"
+            />
+
+
+
+
+
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="138dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_bckg"
+            android:text="Submit"
+            android:textColor="@color/colorBackground"/>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
