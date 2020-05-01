@@ -446,4 +446,12 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"/>
 </RelativeLayout>

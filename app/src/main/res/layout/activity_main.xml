@@ -138,4 +138,17 @@
 
     </LinearLayout>
 
+
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="100dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_bckg"
+        android:text="Log OUT"
+        android:textColor="@color/colorBackground"/>
+
 </RelativeLayout>
