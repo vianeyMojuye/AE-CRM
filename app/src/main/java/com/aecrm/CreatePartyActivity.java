@@ -116,6 +116,10 @@ public class CreatePartyActivity extends AppCompatActivity implements AdapterVie
 
         //callCountryTask
         callCountryTask();
+        //callStateTask
+        callStateTask();
+        //callCityTask
+        callCityTask();
 
         country = (Spinner) findViewById(R.id.spinner_country);
         state = (Spinner) findViewById(R.id.spinner_state);
@@ -503,8 +507,16 @@ public class CreatePartyActivity extends AppCompatActivity implements AdapterVie
             }else if(serviceToCall =="getCountryList")
             {
                 //get CountryvList fom API
-                  getCountryList();;
+                  getCountryList();
 
+            }else if(serviceToCall == "getStateList")
+            {
+                //get StateList fom API
+                getStateList();
+
+            }else if(serviceToCall == "getCityList"){
+                //get CityList fom API
+                getCityList();
             }
             return null;
         }
@@ -512,71 +524,94 @@ public class CreatePartyActivity extends AppCompatActivity implements AdapterVie
         @Override
         protected void onPostExecute(Void result) {
             Log.i(TAG, "onPostExecute");
-            Log.i(TAG, res);
 
-            //New Party
-            if(serviceToCall =="NewParty") {
-                //Type is used for the conversion String into ArrayList
-                Type type1 = new TypeToken<HashMap<String, ArrayList<APIResponse>>>() {
-                }.getType();
-                //  receive the object from Soap Response
-                resp = gson.fromJson(res, type1);
-                //Log.i(TAG, resp.get("data").get(0).getName() );
+            if(res != null) {
+                Log.i(TAG, res);
 
-                APIResponse answer = new APIResponse(resp.get("data").get(0).getMessage(), resp.get("data").get(0).getMessageType());
+                //New Party
+                if (serviceToCall == "NewParty") {
+                    //Type is used for the conversion String into ArrayList
+                    Type type1 = new TypeToken<HashMap<String, ArrayList<APIResponse>>>() {
+                    }.getType();
+                    //  receive the object from Soap Response
+                    resp = gson.fromJson(res, type1);
+                    //Log.i(TAG, resp.get("data").get(0).getName() );
 
-
-                Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
-
-                if (answer.getMessageType().equals("Success")) {
-
-                    //reset inputs
-                    resetInput();
-                    // loading also when you click on sin in
-                    loadingProgressBar.setVisibility(View.GONE);
-                    showAlertDialog(CreatePartyActivity.this, " Creation New Party ", "SuccessFul!!!", false);
+                    APIResponse answer = new APIResponse(resp.get("data").get(0).getMessage(), resp.get("data").get(0).getMessageType());
 
 
-                } else {
+                    Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
 
-                    // loading also when you click on sin in
-                    loadingProgressBar.setVisibility(View.GONE);
-                    showAlertDialog(CreatePartyActivity.this, " Creation New Party ", "Failed!!!", false);
+                    if (answer.getMessageType().equals("Success")) {
+
+                        //reset inputs
+                        resetInput();
+                        // loading also when you click on sin in
+                        loadingProgressBar.setVisibility(View.GONE);
+                        showAlertDialog(CreatePartyActivity.this, " Creation New Party ", "SuccessFul!!!", false);
+
+
+                    } else {
+
+                        // loading also when you click on sin in
+                        loadingProgressBar.setVisibility(View.GONE);
+                        showAlertDialog(CreatePartyActivity.this, " Creation New Party ", "Failed!!!", false);
+                    }
+
                 }
+                else if (serviceToCall == "getCountryList") {
 
-            }else if(serviceToCall =="getCountryList"){
+                    //get Country's List
+                    //Type is used for the conversion String into ArrayList
+                    Type type1 = new TypeToken<HashMap<String, ArrayList<Country>>>() {
+                    }.getType();
+                    //  receive the object from Soap Response
+                    countryRes = gson.fromJson(res, type1);
+                    //Log.i(TAG, resp.get("data").get(0).getName() );
 
-                //get Country's List
-                //Type is used for the conversion String into ArrayList
-                Type type1 = new TypeToken<HashMap<String, ArrayList<Country>>>() {
-                }.getType();
-                //  receive the object from Soap Response
-                countryRes = gson.fromJson(res, type1);
-                //Log.i(TAG, resp.get("data").get(0).getName() );
-
-                Country answer = new Country(countryRes.get("data").get(0).getCountryId(),countryRes.get("data").get(0).getCountry(),countryRes.get("data").get(0).getStatus() );
+                    Country answer = new Country(countryRes.get("data").get(0).getCountryId(), countryRes.get("data").get(0).getCountry(), countryRes.get("data").get(0).getStatus());
 
 
-                //strore the Country List in the array required for the spinner
+                    //strore the Country List in the array required for the spinner
 
-                for (int i =0; i< countryRes.get("data").size() ; i++)
-                {
-                    myCountry.add(countryRes.get("data").get(i).getCountry());
+                    for (int i = 0; i < countryRes.get("data").size(); i++) {
+                        myCountry.add(countryRes.get("data").get(i).getCountry());
+                    }
+
+
+                    Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
+
+
                 }
+                else if (serviceToCall == "getStateList") {
+
+                    //get State's List
+                    //Type is used for the conversion String into ArrayList
+                    Type type1 = new TypeToken<HashMap<String, ArrayList<State>>>() {
+                    }.getType();
+                    //  receive the object from Soap Response
+                    stateRes = gson.fromJson(res, type1);
+                    //Log.i(TAG, resp.get("data").get(0).getName() );
+
+                    Country answer = new Country(stateRes.get("data").get(0).getCountryId(), countryRes.get("data").get(0).getCountry(), countryRes.get("data").get(0).getStatus());
 
 
-                Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
+                    //strore the Country List in the array required for the spinner
 
-//                if (answer.getStatus().equals("Active")) {
-//
+                    for (int i = 0; i < countryRes.get("data").size(); i++) {
+                        myCountry.add(countryRes.get("data").get(i).getCountry());
+                    }
 
 
-//                } else {
-//
-//                    // loading also when you click on sin in
-//                    loadingProgressBar.setVisibility(View.GONE);
-//                    showAlertDialog(CreatePartyActivity.this, " Creation New Party ", "Failed!!!", false);
-//                }
+                    Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
+
+                }
+                else if (serviceToCall == "getCityList") {
+
+
+                }
+            }
+            else{
 
 
             }
@@ -718,6 +753,112 @@ public class CreatePartyActivity extends AppCompatActivity implements AdapterVie
         //Call execute
         mytask.execute();
     }
+
+    //getStateList
+    public void getStateList()
+    {
+        METHOD_NAME = "GetStateList";
+        SOAP_ACTION = SOAP_ACTION+METHOD_NAME;
+
+
+        //Create request
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        //NO parameters
+
+        //Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        //Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        //Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            //Invole web service
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            //Get the response
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            //Assign it to fahren static variable
+            res = response.getValue().toString();
+            Log.i(TAG,res);
+            System.out.println(res);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //call the task for fetching the state's list from API
+    public void callStateTask()
+    {
+        serviceToCall ="getStateList";
+        //Create instance for AsyncCallWS
+        CreatePartyActivity.AsyncCallWS mytask = new CreatePartyActivity.AsyncCallWS();
+        //Call execute
+        mytask.execute();
+    }
+
+    //getCityList
+    public void getCityList()
+    {
+        METHOD_NAME = "GetCityList";
+        SOAP_ACTION = SOAP_ACTION+METHOD_NAME;
+
+
+        //Create request
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        //NO parameters
+
+        //Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        //Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        //Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            //Invole web service
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            //Get the response
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            //Assign it to fahren static variable
+            res = response.getValue().toString();
+            Log.i(TAG,res);
+            System.out.println(res);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //call the task for fetching the state's list from API
+    public void callCityTask()
+    {
+        serviceToCall ="getCityList";
+        //Create instance for AsyncCallWS
+        CreatePartyActivity.AsyncCallWS mytask = new CreatePartyActivity.AsyncCallWS();
+        //Call execute
+        mytask.execute();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //Alert DialogBox
