@@ -1,11 +1,10 @@
-package com.aecrm;
+package com.aecrm.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,14 +12,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aecrm.Models.PartyModel;
+import com.aecrm.R;
+import com.aecrm.Activities.VisitItemActivity;
+
 import java.util.ArrayList;
 
 public class VisitPartyAdapter extends  RecyclerView.Adapter<OperationAdapter.MyViewHolder>
 {
     Context context;
-    ArrayList<String> itemList = new ArrayList<>() ;
+    ArrayList<PartyModel> itemList = new ArrayList<>() ;
 
-   public VisitPartyAdapter(Context context, ArrayList<String> objects)
+   public VisitPartyAdapter(Context context, ArrayList<PartyModel> objects)
    {
        this.context = context;
        this.itemList = objects;
@@ -41,7 +44,7 @@ public class VisitPartyAdapter extends  RecyclerView.Adapter<OperationAdapter.My
     public void onBindViewHolder(@NonNull OperationAdapter.MyViewHolder holder, int position) {
 
 
-        final String item = itemList.get(position);
+        final String item = itemList.get(position).getParty();
 
         holder.itemName.setText(item);
 
@@ -49,7 +52,7 @@ public class VisitPartyAdapter extends  RecyclerView.Adapter<OperationAdapter.My
             @Override
             public void onClick(View v) {
 
-                   Intent intent = new Intent(context,VisitItemActivity.class);
+                   Intent intent = new Intent(context, VisitItemActivity.class);
                    intent.putExtra("name",item);
                     context.startActivity(intent);
 
@@ -66,7 +69,7 @@ public class VisitPartyAdapter extends  RecyclerView.Adapter<OperationAdapter.My
     //This method will filter the list
     //here we are passing the filtered data
     //and assigning it to the list with notifydatasetchanged method
-    public void filterList(ArrayList<String> filterdNames) {
+    public void filterList(ArrayList<PartyModel> filterdNames) {
         this.itemList = filterdNames;
         notifyDataSetChanged();
     }

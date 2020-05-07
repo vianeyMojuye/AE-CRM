@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".VisitPartyActivity">
+    tools:context=".Activities.VisitPartyActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
 
     <LinearLayout
         android:id="@+id/header"
@@ -14,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp" >
+
 
         <ImageView
             android:id="@+id/back"
@@ -52,18 +59,31 @@
         android:background="@drawable/line"
         />
 
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/reclycler_bckg"
+        android:layout_marginLeft="40dp"
+
+
+        >
+
+
 
     <LinearLayout
         android:id="@+id/list_report"
         android:layout_width="340dp"
         android:layout_height="match_parent"
         android:background="@drawable/reclycler_bckg"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
         >
 
      <LinearLayout
@@ -112,10 +132,10 @@
                android:id="@+id/order_yes"
                android:layout_width="60dp"
                android:layout_height="25dp"
-               android:layout_marginLeft="70dp"
-               android:background="@drawable/button_green"
+               android:layout_marginLeft="50dp"
+               android:background="@drawable/button_black"
                android:text="yes"
-               android:textColor="@color/colorGreen"
+               android:textColor="@color/colorBlack"
 
                />
 
@@ -153,7 +173,7 @@
                android:id="@+id/pay_yes"
                android:layout_width="60dp"
                android:layout_height="25dp"
-               android:layout_marginLeft="70dp"
+               android:layout_marginLeft="50dp"
                android:background="@drawable/button_black"
                android:text="Yes"
                android:textColor="@color/colorBlack"
@@ -194,7 +214,7 @@
                android:id="@+id/issue_yes"
                android:layout_width="60dp"
                android:layout_height="25dp"
-               android:layout_marginLeft="70dp"
+               android:layout_marginLeft="50dp"
                android:background="@drawable/button_black"
                android:text="YES"
                android:textColor="@color/colorBlack"
@@ -206,9 +226,9 @@
                android:layout_width="60dp"
                android:layout_height="25dp"
                android:layout_marginLeft="30dp"
-               android:background="@drawable/button_red"
+               android:background="@drawable/button_black"
                android:text="NO"
-               android:textColor="@color/colorRed"
+               android:textColor="@color/colorBlack"
 
                />
 
@@ -218,16 +238,15 @@
 
         <EditText
             android:id="@+id/edit_issue"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="153dp"
             android:background="@drawable/button_black"
-            android:layout_marginTop="15dp"
-            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="5dp"
             android:hint="@string/hint_issue"
             android:visibility="gone"
             />
-
-
 
 
 
@@ -236,7 +255,7 @@
             android:id="@+id/submit"
             android:layout_width="138dp"
             android:layout_height="35dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="35dp"
             android:layout_gravity="center"
             android:background="@drawable/button_bckg"
             android:text="Submit"
@@ -244,10 +263,18 @@
 
 
 
-
-
-
     </LinearLayout>
+
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".IssueHistoryActivity"
+    tools:context=".Activities.IssueHistoryActivity"
     android:paddingLeft="30dp"
     android:paddingRight="30dp">
 
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
 
     <LinearLayout
         android:id="@+id/header"
@@ -65,5 +69,13 @@
         />
 
 
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

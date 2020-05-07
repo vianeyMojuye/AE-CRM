@@ -1,5 +1,6 @@
-package com.aecrm;
+package com.aecrm.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,6 +12,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aecrm.Activities.CreatePartyActivity;
+import com.aecrm.Activities.IssueHistoryActivity;
+import com.aecrm.CheckInternetConnection;
+import com.aecrm.Models.APIHeaderModel;
+import com.aecrm.R;
+import com.aecrm.Activities.VisitHistoryActivity;
+import com.aecrm.Activities.VisitPartyActivity;
 
 public class OperationAdapter extends  RecyclerView.Adapter<OperationAdapter.MyViewHolder> {
 
@@ -35,6 +44,11 @@ public class OperationAdapter extends  RecyclerView.Adapter<OperationAdapter.MyV
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        // Connection detector class
+        final CheckInternetConnection cd = new CheckInternetConnection(context);
+        //Internet status flag
+        final Boolean[] isConnectionExist = {false};
+
 
 
         final String item = itemList[position];
@@ -45,26 +59,45 @@ public class OperationAdapter extends  RecyclerView.Adapter<OperationAdapter.MyV
             @Override
             public void onClick(View v) {
 
-                if(item =="Visit Party")
-                {
-                    Intent intent = new Intent(context,VisitPartyActivity.class);
-                    context.startActivity(intent);
+                APIHeaderModel head = new APIHeaderModel();
+                // get Internet status
+                isConnectionExist[0] = cd.checkInternet();
 
-                }else if(item =="Create Party"){
+                if (isConnectionExist[0]) {
 
-                    Intent intent = new Intent(context,CreatePartyActivity.class);
-                    context.startActivity(intent);
 
-                }else if(item =="Issue History"){
+                    if (item == "Visit Party") {
+                        Intent intent = new Intent(context, VisitPartyActivity.class);
+                        context.startActivity(intent);
+                        ((Activity)context).finish();
 
-                    Intent intent = new Intent(context,IssueHistoryActivity.class);
-                    context.startActivity(intent);
-                }else if(item =="Visit History"){
 
-                    Intent intent = new Intent(context,VisitHistoryActivity.class);
-                    context.startActivity(intent);
+                    } else if (item == "Create Party") {
+
+                        Intent intent = new Intent(context, CreatePartyActivity.class);
+                        context.startActivity(intent);
+                        ((Activity)context).finish();
+
+
+                    } else if (item == "Issue History") {
+
+                        Intent intent = new Intent(context, IssueHistoryActivity.class);
+                        context.startActivity(intent);
+                        ((Activity)context).finish();
+
+                    } else if (item == "Visit History") {
+
+                        Intent intent = new Intent(context, VisitHistoryActivity.class);
+                        context.startActivity(intent);
+                        ((Activity)context).finish();
+
+                    }
+
+                }else{
+                    // Internet connection doesn't exist
+                    head.showAlertDialog(context, "No Internet Connection", "Please keep your phone connected to internet", false);
+
                 }
-
             }
         });
 

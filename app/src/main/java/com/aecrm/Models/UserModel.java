@@ -1,14 +1,15 @@
-package com.aecrm;
+package com.aecrm.Models;
 
 
-public class User {
+public class UserModel {
     String Name;
     String Contact;
     String Email;
     String Role;
     String Picture;
 
-   public User(String Name, String Contact, String Email, String Role, String Picture)
+
+   public UserModel(String Name, String Contact, String Email, String Role, String Picture)
     {
         this.Name =Name;
         this.Contact = Contact;
@@ -18,7 +19,7 @@ public class User {
 
     }
 
-    public User(){}
+    public UserModel(){}
 
     public void setName(String Name) {
         this.Name = Name;

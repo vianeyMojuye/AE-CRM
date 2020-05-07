@@ -1,6 +1,7 @@
-package com.aecrm;
+package com.aecrm.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,9 +9,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.aecrm.Adapters.OperationAdapter;
+import com.aecrm.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView myOperations, myReports;
     LinearLayout operation,report;
     Button logout;
+    Toolbar toolbar;
+
+
+    //initialize the shared pref
+    SharedPreferences   sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         myOperations = (RecyclerView)findViewById(R.id.list_operation);
         myReports = (RecyclerView)findViewById(R.id.list_report);
        logout = (Button)findViewById(R.id.logOut);
+       toolbar = (Toolbar)findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
 
          // Operation Clicks
         operation.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //clear the logged user object in the shar PRef
 
-                //initialize the shared pref
-             SharedPreferences   sharedPreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+             sharedPreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
                 //creating an Editor object ; to Edit(write into the file)
                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -105,5 +118,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch ((item.getItemId()))
+        {
+            case R.id.menu_profile:
+
+                //call activity profile
+
+                startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+
+            break;
+            case R.id.menu_logout:
+
+                //clear the logged user object in the shar PRef
+                sharedPreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+
+                //creating an Editor object ; to Edit(write into the file)
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                //storing the VoiceMArkerModel object
+                editor.putString("LogUser","");
+                //apply the changes
+                editor.apply();
+                //call the login activity
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                finish();
+
+            break;
+            default:
+
+            break;
+        }
+        return  true;
     }
 }

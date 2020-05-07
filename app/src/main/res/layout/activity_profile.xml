@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProfileActivity"
+    android:background="@color/colorBackground"
+
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+       >
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="5dp"
+            android:layout_marginRight="80dp"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:text="My"
+            android:textColor="@color/colortitle"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            />
+        <TextView
+            android:id="@+id/visit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Profile "
+            android:textColor="@color/colorSecondary"
+            android:textSize="25sp"
+            />
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/line"
+        />
+
+<!--    Image profile-->
+    <ImageView
+        android:id="@+id/image_profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/ic_person" />
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/image_profile"
+        android:layout_marginTop="30dp">
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:text="Name :"
+            android:textColor="@color/colortitle"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp"
+
+            />
+        <TextView
+            android:id="@+id/name_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Name "
+            android:textColor="@color/colorSecondary"
+            android:textSize="25sp"
+            />
+
+
+    </LinearLayout>
+
+   <LinearLayout
+    android:id="@+id/role"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="70dp"
+    android:layout_below="@+id/profile"
+    android:layout_marginTop="10dp">
+
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Role : "
+        android:textColor="@color/colortitle"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginRight="30dp"
+
+        />
+    <TextView
+        android:id="@+id/role_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Role "
+        android:textColor="@color/colorSecondary"
+        android:textSize="25sp"
+        />
+
+
+</LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.aecrm;
+package com.aecrm.Models;
 
 public class APIResponse {
 

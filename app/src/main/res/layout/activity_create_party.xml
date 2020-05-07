@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".CreatePartyActivity">
+    tools:context=".Activities.CreatePartyActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
 
 
     <LinearLayout
@@ -127,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="@drawable/edit_create_bckg"
-                    android:hint="Qrst"
+                    android:hint="Qrst (optional)"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorBlack" />
 
@@ -155,17 +160,20 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    <!-- Spinner Element -->
-                    <Spinner
-                        android:id="@+id/spinner_country"
-                        android:layout_width="302dp"
-                        android:layout_height="35dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/edit_create_bckg"
-                        android:prompt="@string/country_title"
-                        android:spinnerMode="dropdown"
-                        />
+                        android:id="@+id/countrybtn">
+
+                        <TextView
+                            android:id="@+id/btnCountry"
+                            android:layout_width="260dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/edit_create_bckg"
+                            android:text="Select Country"
+                            android:paddingLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:textSize="15dp"
+                            />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -209,18 +217,23 @@
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
+                        android:id="@+id/statebtn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    <!-- Spinner Element -->
-                    <Spinner
-                        android:id="@+id/spinner_state"
-                        android:layout_width="302dp"
-                        android:layout_height="35dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/edit_create_bckg"
-                        android:prompt="@string/country_title"
-                        android:spinnerMode="dropdown"
-                        />
+                        >
+
+
+                        <TextView
+                            android:id="@+id/btnState"
+                            android:layout_width="260dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/edit_create_bckg"
+                            android:text="Select State"
+                            android:paddingLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:textSize="15dp"
+                            />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -265,18 +278,24 @@
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
+                        android:id="@+id/citybtn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_create_bckg"
+                        >
 
-                        <!-- Spinner Element -->
-                        <Spinner
-                            android:id="@+id/spinner_city"
-                            android:layout_width="302dp"
+
+                        <TextView
+                            android:id="@+id/btnCity"
+                            android:layout_width="260dp"
                             android:layout_height="35dp"
                             android:background="@drawable/edit_create_bckg"
-                            android:prompt="@string/country_title"
-                            android:spinnerMode="dropdown"
+                            android:text=" Select City"
+                            android:paddingLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:textSize="15dp"
                             />
+
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -397,7 +416,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="@drawable/edit_create_bckg"
-                    android:hint="Def"
+                    android:hint="Def  (optional)"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorBlack" />
 
@@ -414,7 +433,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Owner 2 Contact "
+                    android:text="Owner 2 Contact   (optional)"
                     android:textColor="@color/colorBlack"/>
 
                 <EditText

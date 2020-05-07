@@ -1,13 +1,13 @@
-package com.aecrm;
+package com.aecrm.Models;
 
-public class  Country
+public class  CountryModel
 {
     String CountryId;
     String Country;
     String Status;
 
-    public Country(){}
-    public Country(String CountryId, String Country,String Status)
+    public CountryModel(){}
+    public CountryModel(String CountryId, String Country,String Status)
     {
         this.CountryId = CountryId;
         this.Country = Country;

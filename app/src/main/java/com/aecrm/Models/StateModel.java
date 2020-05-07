@@ -1,6 +1,6 @@
-package com.aecrm;
+package com.aecrm.Models;
 
-public class State {
+public class StateModel {
 
     String StateId;
     String State;
@@ -9,7 +9,7 @@ public class State {
     String Status ;
 
 
-    public State(String StateId,String State, String StateCode, String Country,String Status )
+    public StateModel(String StateId,String State, String StateCode, String Country,String Status )
     {
        this.StateId = StateId;
        this.State = State;

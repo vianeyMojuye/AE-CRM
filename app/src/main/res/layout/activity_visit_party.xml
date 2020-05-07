@@ -5,9 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".VisitPartyActivity">
+    tools:context=".Activities.VisitPartyActivity">
 
-  <LinearLayout
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+
+    <LinearLayout
       android:id="@+id/header"
       android:orientation="horizontal"
       android:layout_width="340dp"
@@ -91,5 +97,13 @@
         android:layout_centerHorizontal="true"
         />
 
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

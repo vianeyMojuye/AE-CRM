@@ -1,6 +1,5 @@
-package com.aecrm;
+package com.aecrm.Activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,8 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
+import com.aecrm.CheckInternetConnection;
+import com.aecrm.Models.APIHeaderModel;
+import com.aecrm.Models.UserModel;
+import com.aecrm.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,15 +32,16 @@ import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private final String NAMESPACE = "http://tempuri.org/";
-    private final String URL = "http://203.134.206.216:85/aeservice.asmx";
-    private final String SOAP_ACTION = "http://tempuri.org/AuthenticateLogin";
+    APIHeaderModel head = new APIHeaderModel();
+    private final String NAMESPACE = head.getNAMESPACE();
+    private final String URL = head.getURL();
     private final String METHOD_NAME = "AuthenticateLogin";
-    private String TAG = "AE CRM";
+    private final String SOAP_ACTION = NAMESPACE+METHOD_NAME;  //"http://tempuri.org/AuthenticateLogin";
+    private String TAG = head.getTAG();
 
     EditText username,password;
     Button login;
-    ProgressBar loadingProgressBar;
+    ProgressBar loadingProgressBar ;
 
     //Define the shared pref
     SharedPreferences sharedPreferences;
@@ -53,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     // ArrayList<User> myresp = new ArrayList<User>();
-    HashMap<String, ArrayList<User>> resp = new HashMap<String, ArrayList<User> >();
+    HashMap<String, ArrayList<UserModel>> resp = new HashMap<String, ArrayList<UserModel> >();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,21 +108,21 @@ public class LoginActivity extends AppCompatActivity {
                             username.setText("");
                             password.setText("");
                             // Internet connection doesn't exist
-                            showAlertDialog(LoginActivity.this, "No Internet Connection", "Your device doesn't have internet access", false);
+                            head.showAlertDialog(LoginActivity.this, "No Internet Connection", "Your device doesn't have internet access", false);
 
                         }
 
 
                     }else{
                         password.requestFocus();
-                        showAlertDialog(LoginActivity.this, "Empty Password ", "Please fill all the fields", false);
+                        head.showAlertDialog(LoginActivity.this, "Empty Password ", "Please fill all the fields", false);
 
                     }
 
 
                 }else{
                     username.requestFocus();
-                    showAlertDialog(LoginActivity.this, "Empty USER ID ", "Please fill all the fields", false);
+                    head.showAlertDialog(LoginActivity.this, "Empty USER ID ", "Please fill all the fields", false);
 
                 }
 
@@ -146,42 +149,51 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "onPostExecute");
             Log.i(TAG, "-> "+res);
             if(!(res ==null)) {
-                //Type is used for the conversion String into ArrayList
-                Type type1 = new TypeToken<HashMap<String, ArrayList<User>>>() {
-                }.getType();
-                //  receive the object from Soap Response
-                resp = gson.fromJson(res, type1);
-                //Log.i(TAG, resp.get("data").get(0).getName() );
+
+                try {
+                    //Type is used for the conversion String into ArrayList
+                    Type type1 = new TypeToken<HashMap<String, ArrayList<UserModel>>>() {
+                    }.getType();
+                    //  receive the object from Soap Response
+                    resp = gson.fromJson(res, type1);
+                    //Log.i(TAG, resp.get("data").get(0).getName() );
 
 
-                Log.i(TAG, String.valueOf(resp.get("data").isEmpty()));
-
-                if (!resp.get("data").isEmpty()) {
-
-                    User user = new User(resp.get("data").get(0).getName(), resp.get("data").get(0).getContact(),
-                            resp.get("data").get(0).getEmail(), resp.get("data").get(0).getRole(),
-                            resp.get("data").get(0).getPicture());
+                    if (!resp.get("data").get(0).getName().isEmpty()) {
 
 
-                    //store the user data in the SharedPref
-                    storeLogUser(user);
+
+                        UserModel user = new UserModel(resp.get("data").get(0).getName(), resp.get("data").get(0).getContact(),
+                                resp.get("data").get(0).getEmail(), resp.get("data").get(0).getRole(),
+                                resp.get("data").get(0).getPicture());
 
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    String myJson = gson.toJson(user);
-                    intent.putExtra("user", myJson);
-                    startActivity(intent);
-                    finish();
-                    // loading also when you click on sin in
+                        //store the user data in the SharedPref
+                        storeLogUser(user);
+
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        String myJson = gson.toJson(user);
+                        intent.putExtra("user", myJson);
+                        startActivity(intent);
+                        finish();
+                        // loading also when you click on sin in
+                        loadingProgressBar.setVisibility(View.GONE);
+                    } else {
+                        username.setText("");
+                        password.setText("");
+                        head.showAlertDialog(LoginActivity.this, "Incorrect Login Credentials !!!", "Please enter correct values", false);
+                    }
+                }catch (Exception e)
+                {
                     loadingProgressBar.setVisibility(View.GONE);
-                } else {
-                    username.setText("");
-                    password.setText("");
-                    showAlertDialog(LoginActivity.this, "Incorrect Login Credentials !!!", "Please enter correct values", false);
+                    head.showAlertDialog(LoginActivity.this, " Login Failed", "User Not Found !!!", false);
+
                 }
+
             }else {
                 loadingProgressBar.setVisibility(View.GONE);
-                showAlertDialog(LoginActivity.this, "Incorrect Login Credentials !!! ", "Please enter correct values", false);
+                head.showAlertDialog(LoginActivity.this, " Internal Server Error", "Oops !!!", false);
 
             }
         }
@@ -237,25 +249,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    //Alert DialogBox
-    public void showAlertDialog(Context context, String title, String message, Boolean status) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        // Setting Dialog Title
-        alertDialog.setTitle(title);
-        // Setting Dialog Message
-        alertDialog.setMessage(message);
-        // Setting alert dialog icon
-        // alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
-        // Setting OK Button
-
-        // Setting OK Button
-
-        // Showing Alert Message
-        alertDialog.show();
-    }
-
    //write into logged  user sharedPref
-    public  void storeLogUser(User user)
+    public  void storeLogUser(UserModel user)
     {
 
         // convert User object into String
