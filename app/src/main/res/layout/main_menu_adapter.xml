@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/menu_adapter">
+
+
+    <LinearLayout
+        android:id="@+id/op"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_bckg"
+
+        >
+
+
+
+        <RelativeLayout
+            android:id="@+id/operation"
+            android:layout_width="317dp"
+            android:layout_height="47dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_bckg"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/operatation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_bckg"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="OPERATIONS"
+                android:textSize="20sp"
+                android:textColor="@color/colorBackground"/>
+
+
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/arrow_down"
+                android:background="@drawable/button_bckg"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_operation"
+            android:layout_width="317dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drop_down_bckg"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

@@ -85,6 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_below="@+id/image_profile"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp">
 
 
@@ -116,6 +117,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="70dp"
     android:layout_below="@+id/profile"
+       android:layout_centerHorizontal="true"
     android:layout_marginTop="10dp">
 
 

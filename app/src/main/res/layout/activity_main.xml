@@ -35,127 +35,27 @@
         />
 
 
-    <LinearLayout
-        android:id="@+id/op"
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menu_list"
         android:layout_width="317dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
-        android:background="@drawable/button_bckg"
-
-        >
-
-
-
-    <LinearLayout
-        android:id="@+id/operation"
-        android:layout_width="317dp"
-        android:layout_height="47dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_bckg"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_bckg"
-            android:layout_marginLeft="50dp"
-            android:gravity="center"
-            android:text="OPERATIONS"
-            android:textSize="20sp"
-            android:textColor="@color/colorBackground"/>
-
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_down"
-            android:background="@drawable/button_bckg"
-            android:layout_marginLeft="90dp"
-            />
-
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_operation"
-        android:layout_width="317dp"
-        android:layout_height="94dp"
-        android:background="@drawable/drop_down_bckg"
-        android:visibility="gone"
-        />
-
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:id="@+id/rep"
-        android:layout_width="317dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/op"
-        android:background="@drawable/button_bckg"
-        >
-
-    <LinearLayout
-        android:id="@+id/report"
-        android:layout_width="317dp"
-        android:layout_height="47dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_bckg"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_bckg"
-            android:layout_marginLeft="50dp"
-            android:gravity="center"
-            android:text="REPORTS"
-            android:textSize="20sp"
-            android:textColor="@color/colorBackground"/>
-
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_down"
-            android:background="@drawable/button_bckg"
-            android:layout_marginLeft="125dp"/>
-
-     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_report"
-        android:layout_width="317dp"
-        android:layout_height="94dp"
-        android:background="@drawable/drop_down_bckg"
-        android:visibility="gone"
         />
 
 
-    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"/>
 
 
-
-    <Button
-        android:id="@+id/logOut"
-        android:layout_width="100dp"
-        android:layout_height="37dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_bckg"
-        android:text="Log OUT"
-        android:textColor="@color/colorBackground"/>
 
 </RelativeLayout>

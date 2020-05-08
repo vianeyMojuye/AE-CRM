@@ -124,10 +124,10 @@ public class CreatePartyActivity extends AppCompatActivity {
     ArrayList<String> myCountry = new ArrayList<>();
     ArrayList<String> myState = new ArrayList<>();
     ArrayList<String> myCity = new ArrayList<>();
-    // Creating adapter for spinner
-    ArrayAdapter<String> countryAdapter;
-    ArrayAdapter<String> stateAdapter;
-    ArrayAdapter<String> cityAdapter;
+    // getting countries, states,cities elt
+//    ArrayAdapter<CountryModel> countryList;
+//    ArrayAdapter<StateModel> stateList;
+//    ArrayAdapter<CityModel> cityList;
 
     // Connection detector class
     CheckInternetConnection cd;
@@ -188,6 +188,8 @@ public class CreatePartyActivity extends AppCompatActivity {
         spinnerDialog = new SpinnerDialog(CreatePartyActivity.this,myCountry,"Select item");
         spinnerDialog1 = new SpinnerDialog(CreatePartyActivity.this,myState,"Select item");
         spinnerDialog2 = new SpinnerDialog(CreatePartyActivity.this,myCity,"Select item");
+
+        //spinner shows list of countries
         spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
             @Override
             public void onClick(String item, int position) {
@@ -195,10 +197,22 @@ public class CreatePartyActivity extends AppCompatActivity {
                     my_country = item;
                     btn_country.setText(item);
 
+                    //clear the state's list first
+                    myState.clear();
+
+                    //filter the state list according to the selected country
+                    for (int i = 0; i < stateRes.get("data").size(); i++) {
+                        if(stateRes.get("data").get(i).getCountry().equals(my_country))
+                        {
+                            myState.add(stateRes.get("data").get(i).getState());
+                        }
+                    }
 
                 Toast.makeText(CreatePartyActivity.this, "Select :"+item, Toast.LENGTH_SHORT).show();
             }
         });
+
+        //spinner shows list of states
         spinnerDialog1.bindOnSpinerListener(new OnSpinerItemClick() {
             @Override
             public void onClick(String item, int position) {
@@ -207,9 +221,21 @@ public class CreatePartyActivity extends AppCompatActivity {
                     my_state = item;
                     btn_state.setText(item);
 
+                //clear the city's list first
+                myCity.clear();
+                //filter the City list according to the selected State
+                for (int i = 0; i < cityRes.get("data").size(); i++) {
+                    if(cityRes.get("data").get(i).getState().equals(my_state))
+                    {
+                        myCity.add(cityRes.get("data").get(i).getCity());
+                    }
+                }
+
+
                 Toast.makeText(CreatePartyActivity.this, "Select :"+item, Toast.LENGTH_SHORT).show();
             }
         });
+        //spinner show list of cities
         spinnerDialog2.bindOnSpinerListener(new OnSpinerItemClick() {
             @Override
             public void onClick(String item, int position) {
@@ -232,14 +258,25 @@ public class CreatePartyActivity extends AppCompatActivity {
          state.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 spinnerDialog1.showSpinerDialog();
+
+                 if(my_country==null)
+                 {
+                   Toast.makeText(CreatePartyActivity.this," Please Select Country First",Toast.LENGTH_LONG).show();
+                 }else{
+                   spinnerDialog1.showSpinerDialog();
+                 }
              }
          });
         // click city // select city
          city.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 spinnerDialog2.showSpinerDialog();
+                 if(my_state==null)
+                 {
+                     Toast.makeText(CreatePartyActivity.this," Please Select State First",Toast.LENGTH_LONG).show();
+                 }else{
+                    spinnerDialog2.showSpinerDialog();
+                 }
              }
          });
 
@@ -857,11 +894,11 @@ public class CreatePartyActivity extends AppCompatActivity {
 
                     //strore the State's List in the array required for the spinner
 
-                    for (int i = 0; i < stateRes.get("data").size(); i++) {
-                        myState.add(stateRes.get("data").get(i).getState());
-                    }
+//                    for (int i = 0; i < stateRes.get("data").size(); i++) {
+//                        myState.add(stateRes.get("data").get(i).getState());
+//                    }
 
-                    Log.i(TAG,"StateList ->   "+ myState.toString());
+//                    Log.i(TAG,"StateList ->   "+ myState.toString());
 
                     //callCityTask
                     callCityTask();
@@ -879,10 +916,10 @@ public class CreatePartyActivity extends AppCompatActivity {
                     myCity.clear();
                     //strore the City's List in the array required for the spinner
 
-                    for (int i = 0; i < cityRes.get("data").size(); i++) {
-                        myCity.add(cityRes.get("data").get(i).getCity());
-                    }
-                    Log.i(TAG,"CityList ->   "+ myCity.toString());
+//                    for (int i = 0; i < cityRes.get("data").size(); i++) {
+//                        myCity.add(cityRes.get("data").get(i).getCity());
+//                    }
+//                    Log.i(TAG,"CityList ->   "+ myCity.toString());
 
                 }else if(serviceToCall=="addCountry")
                 {
@@ -914,8 +951,7 @@ public class CreatePartyActivity extends AppCompatActivity {
                         loadingProgressBar.setVisibility(View.GONE);
                         head.showAlertDialog(CreatePartyActivity.this, " Creation Country", "Failed!!!", false);
                     }
-                    //reset
-                    stringSCC =null; stringShortname = null;stringStatecode =null;stringPincode=null;
+
                 }else if(serviceToCall=="addState")
                 {
                     //Type is used for the conversion String into ArrayList
@@ -947,7 +983,7 @@ public class CreatePartyActivity extends AppCompatActivity {
                     }
                     //reset
                     btn_country.setText("Select Country");
-                    stringSCC =null; stringShortname = null;stringStatecode =null;stringPincode=null;
+
                 }else if(serviceToCall=="addCity")
                 {
                     //Type is used for the conversion String into ArrayList
@@ -980,6 +1016,12 @@ public class CreatePartyActivity extends AppCompatActivity {
                     //reset
                     btn_state.setText("Select State");
                     stringSCC =null; stringShortname = null;stringStatecode =null;stringPincode=null;
+                    btn_city.setText("Select City");
+                    btn_state.setText("Select State");
+                    btn_country.setText("Select Country");
+                    my_country = null;
+                    my_state = null;
+                    my_city = null;
                 }
             }
             else{
@@ -1016,8 +1058,20 @@ public class CreatePartyActivity extends AppCompatActivity {
         //get user Contact
         String user_contact = getUser();
 
+        //country my_city without short name
+        String[] reg  = my_city.split(" ",-1);
+        int lt  = 0;
+        String out ="" ;
+        for(String a : reg)
+        {
+            if(lt == 0)
+            { out = a;}
+            lt = lt+1;
+        }
 
-        //this should be removed after getting the country, city, state elements from API
+        my_city = out.trim();
+
+
          //Add the property to request object
             request.addProperty("Party",company_name);
             request.addProperty("FirstOwner",owner_name1);
@@ -1332,12 +1386,16 @@ public class CreatePartyActivity extends AppCompatActivity {
         }
         my_state = out.trim();
 
+        Log.i(TAG,"City --->   "+ stringSCC);
+        Log.i(TAG,"ShortName --->   "+ stringShortname);
+        Log.i(TAG,"Pincode --->   "+ stringPincode);
+        Log.i(TAG,"State --->   "+ my_state);
         //Add the property to request object
-         request.addProperty("State",my_state);
-         request.addProperty("City",stringSCC);
-         request.addProperty("PinCode",stringPincode);
-         request.addProperty("ShortName",stringShortname);
-         request.addProperty("User",user);
+          request.addProperty("City",stringSCC);
+          request.addProperty("ShortName",stringShortname);
+          request.addProperty("PinCode",stringPincode);
+          request.addProperty("State",my_state);
+          request.addProperty("User",user);
 
         //Create envelope
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
